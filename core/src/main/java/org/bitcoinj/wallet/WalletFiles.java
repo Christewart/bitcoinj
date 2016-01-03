@@ -82,7 +82,7 @@ public class WalletFiles {
             @Override public Void call() throws Exception {
                 // Runs in an auto save thread.
                 if (!savePending.getAndSet(false)) {
-                    // Some other scheduled request already beat us to it.
+                    log.info("Some other scheduled request already beat us to it.");
                     return null;
                 }
                 log.info("Background saving wallet, last seen block is {}/{}", wallet.getLastBlockSeenHeight(), wallet.getLastBlockSeenHash());

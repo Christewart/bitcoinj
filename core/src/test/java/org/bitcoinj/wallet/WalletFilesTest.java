@@ -46,9 +46,12 @@ public class WalletFilesTest extends TestWithWallet {
     }
 
     @Test
-
-
-
-
-
+    public void autoSaveToFileTest() throws InterruptedException {
+        Thread.sleep(savingInterval + 3000);
+        final Long lastSaveTime = walletFile.lastModified();
+        final Long now = System.currentTimeMillis();
+        final Long difference = now - lastSaveTime;
+        assertTrue(difference > 0);
+        assertTrue(difference <= savingInterval);
+    }
 }
